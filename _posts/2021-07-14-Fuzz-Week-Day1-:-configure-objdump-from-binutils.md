@@ -2,7 +2,7 @@
 layout: post
 ---
 
-This series of blog posts is based on <a href="https://twitter.com/gamozolabs">gamozolabs</a> <a href="https://www.youtube.com/watch?v=2xXt_q3Fex8&list=PLSkhUfcCXvqHsOy2VUxuoAf5m_7c8RqvO">FuzzWeek</a>, I wrote this series because I was taking notes for his videos step by step so I thought it would be useful to share it with the community for people who struggle to watch long videos like me and try to simplify his content.
+This series of blog posts is based on <a href="https://twitter.com/gamozolabs">@gamozolabs</a> <a href="https://www.youtube.com/watch?v=2xXt_q3Fex8&list=PLSkhUfcCXvqHsOy2VUxuoAf5m_7c8RqvO">FuzzWeek</a>, I wrote this series because I was taking notes for his videos step by step so I thought it would be useful to share it with the community for people who struggle to watch long videos like me and try to simplify his content.
 
 if you don’t know his channel which I don’t think so if you are here for Fuzzing, you will find really cool stuff about fuzzing, emulation, hypervisors, and exploitation, I think his content is really better than a lot of 4 digits $ trainings in big conferences.
 
@@ -22,7 +22,7 @@ in this series, he wanted to show how it easy to write your own fuzzer  and how
 ## What is Fuzzing?
 
 
-<b>Fuzzing</b> or <b>fuzz testing</b>is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks.
+<b>Fuzzing</b> or <b>fuzz testing</b> is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks.
 
 {It just run random input through the program}
 
@@ -35,16 +35,30 @@ objdump displays information about one or more object files. The options control
 
 
 
- ## Building Binutils
+<h3> Building Binutils </h3>
 
  we will be working on this version 
  <a href="https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2">binutils-2.14.tar.bz2</a>
 
 
 run these commands to get it.
-'''
+
+'''rust
 wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
+
 '''
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
