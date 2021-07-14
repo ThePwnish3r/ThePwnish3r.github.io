@@ -1,16 +1,17 @@
 ---
 layout: post
 ---
-This series of blog posts is based on gamozo  FuzzWeek, I wrote this series because I was taking notes for his videos step by step so I thought it would be useful to share it with the community for people who struggle to watch long videos like me and try to simplify his content.
 
-if you don't know his channel which I don't think so if you are here for Fuzzing, you will find really cool stuff about fuzzing, emulation, hypervisors, and exploitation, I think his content is really better than a lot of 4 digits $ trainings in big conferences.  
+This series of blog posts is based on @gamozolabs FuzzWeek, I wrote this series because I was taking notes for his videos step by step so I thought it would be useful to share it with the community for people who struggle to watch long videos like me and try to simplify his content.
+
+if you don’t know his channel which I don’t think so if you are here for Fuzzing, you will find really cool stuff about fuzzing, emulation, hypervisors, and exploitation, I think his content is really better than a lot of 4 digits $ trainings in big conferences.
 
 
-so let's start Day1.
+You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-we started with some motivation that security research is about continuously failing like when you get a target that's too hard or you can't find any bugs or you don't have a way of emulating the target or you can't get the coverage or AFL doesn't work on it or it uses a custom compiler that you can't use existing instrumentation so it is okay to fail.
+To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
 
-in this series, he wanted to show how it easy to write your own fuzzer  and how you don't really need to be tied to a tool that's tied to a system (like AFL) because you can quickly make a new fuzzer for a different environment 
+Jekyll also offers powerful support for code snippets:
 
 {% highlight ruby %}
 def print_hi(name)
