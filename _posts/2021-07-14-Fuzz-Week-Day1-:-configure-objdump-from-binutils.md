@@ -7,6 +7,48 @@ This series of blog posts is based on <a href="https://twitter.com/gamozolabs">g
 if you don’t know his channel which I don’t think so if you are here for Fuzzing, you will find really cool stuff about fuzzing, emulation, hypervisors, and exploitation, I think his content is really better than a lot of 4 digits $ trainings in big conferences.
 
 
+
+
+
+
+so let's start Day1.
+
+we started with some motivation that security research is about continuously failing like when you get a target that's too hard or you can't find any bugs or you don't have a way of emulating the target or you can't get the coverage or AFL doesn't work on it or it uses a custom compiler that you can't use existing instrumentation so it is okay to fail.
+
+in this series, he wanted to show how it easy to write your own fuzzer  and how you don't really need to be tied to a tool that's tied to a system (like AFL) because you can quickly make a new fuzzer for a different environment.
+
+
+
+<b>What is Fuzzing?<b>
+
+
+<b>Fuzzing<b> or <b>fuzz testing<b> is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks.
+
+{It just run random input through the program}
+
+
+## <b>objdump from binutils<b> 
+
+
+objdump displays information about one or more object files. The options control what particular information to display. This information is mostly useful to programmers who are working on the compilation tools, as opposed to programmers who just want their program to compile and work, it is an easy target and has a lot of bugs so we will be working on it.
+
+
+
+
+ ###Building Binutils
+
+ we will be working on this version 
+ <a href="https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2">binutils-2.14.tar.bz2</a>
+
+
+run these commands to get it.
+'''
+wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
+'''
+
+
+
+
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
