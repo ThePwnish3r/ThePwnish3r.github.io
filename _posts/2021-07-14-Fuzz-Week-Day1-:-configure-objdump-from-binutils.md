@@ -79,6 +79,17 @@ it still doesn't show debugging information due to some linker stuff, we will tr
 
 
 
+now we will write a fuzzer that tries different options on objdump. 
+
+## objdump_fuzzer
+
+so the first thing we gonna start with is the <b>HARNESS</b>
+
+ #### THE HARNESS 
+    the part of the program which gonna run the program and observe the crashes 
+
+ #### THE CORPUS
+ A set of minimal test inputs that generate maximal code coverage.
 
 
 
