@@ -36,7 +36,7 @@ objdump displays information about one or more object files. The options control
 
 
 <h3> Building Binutils </h3>
- eeeh
+ 
  we will be working on this version 
 
  <a href="https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2">binutils-2.14.tar.bz2</a>
