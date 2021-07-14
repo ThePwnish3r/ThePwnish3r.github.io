@@ -48,11 +48,18 @@ run these commands to get it.
 wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
 {% endhighlight %}
 
+{% highlight bash %}
+tar xf binutils-2.14.tar.bz2 binutils-2.14
+{% endhighlight %}
 
+then open the directory and run configure script and make to build it.
 
-
-
-
+{% highlight bash %}
+./configure
+{% endhighlight %}
+{% highlight bash %}
+make
+{% endhighlight %}
 
 
 
