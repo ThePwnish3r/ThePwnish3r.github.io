@@ -22,7 +22,7 @@ in this series, he wanted to show how it easy to write your own fuzzer  and how
 <b>What is Fuzzing?<b>
 
 
-<b>Fuzzing<b> or <b>fuzz testing<b> is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks.
+<span><b>Fuzzing<b> or <b>fuzz testing<b><span> is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks.
 
 {It just run random input through the program}
 
@@ -35,7 +35,7 @@ objdump displays information about one or more object files. The options control
 
 
 
- ###Building Binutils
+ ### Building Binutils
 
  we will be working on this version 
  <a href="https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2">binutils-2.14.tar.bz2</a>
