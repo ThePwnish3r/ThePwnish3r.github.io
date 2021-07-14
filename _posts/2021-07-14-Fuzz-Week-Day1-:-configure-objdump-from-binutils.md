@@ -19,15 +19,15 @@ in this series, he wanted to show how it easy to write your own fuzzer  and how
 
 
 
-<b>What is Fuzzing?<b>
+## What is Fuzzing?
 
 
-<span><b>Fuzzing<b> or <b>fuzz testing<b><span> is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks.
+<b>Fuzzing</b> or <b>fuzz testing</b>is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks.
 
 {It just run random input through the program}
 
 
-## <b>objdump from binutils<b> 
+## objdump from binutils 
 
 
 objdump displays information about one or more object files. The options control what particular information to display. This information is mostly useful to programmers who are working on the compilation tools, as opposed to programmers who just want their program to compile and work, it is an easy target and has a lot of bugs so we will be working on it.
