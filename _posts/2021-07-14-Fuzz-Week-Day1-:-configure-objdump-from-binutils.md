@@ -37,11 +37,15 @@ objdump displays information about one or more object files. The options control
 
 <h3> Building Binutils </h3>
 
- we will be working on this version 
+ we will be working on this version <\n>
  <a href="https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2">binutils-2.14.tar.bz2</a>
 
 
 run these commands to get it.
+
+{% highlight  %}
+wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
+{% endhighlight %}
 
 '''rust
 wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
