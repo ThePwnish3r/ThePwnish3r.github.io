@@ -61,10 +61,21 @@ then open the directory and run configure script and make to build it.
 make
 {% endhighlight %}
 
+we got some errors but we can see that objdump has been built successfully and that is what we want so it does not matter.
 
+BUT! we will have some issues that there is no debugging information because it is considered something new so we want to add them.
 
-ss
+so we rebuild it with DWARF 2
+{% highlight bash %}
+make clean
+{% endhighlight %}
+{% highlight bash %}
+CFLAGS="-O0 -g -gdwarf-2" ./configure{% endhighlight %}
+{% highlight bash %}
+make
+{% endhighlight %}
 
+it still doesn't show debugging information due to some linker stuff, we will try to make it works like this.
 
 
 
