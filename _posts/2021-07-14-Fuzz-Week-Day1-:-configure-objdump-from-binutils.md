@@ -87,11 +87,48 @@ so the first thing we gonna start with is the <b>HARNESS</b>
 
 #### THE HARNESS 
 
-    the part of the program which gonna run the program and observe the crashes 
+The part of the program which gonna run the program and observe the crashes 
 
 #### THE CORPUS
 
- A set of minimal test inputs that generate maximal code coverage.
+A set of minimal test inputs that generate maximal code coverage.
+
+
+here it gonna be any ELF file we have and we will take them from usr/bin
+{% highlight bash %}
+mkdir corpus
+
+cd corpus
+
+cp usr/bin/*
+{% endhighlight %}
+
+
+Now we have a lot of files in the corpus but we only need ELF, so let's remove any file, not ELF.
+{% highlight bash %}
+find * | xargs file | grep -v ELF | cut -d: -f1 | xargs rm
+{% endhighlight %}
+
+from here, he will start to write a fuzzing script in python to cover the basics of fuzzing but I am interested here in the Rust fuzzer. so you could watch the first video from minute 30 <a href="https://youtu.be/2xXt_q3Fex8?list=PLSkhUfcCXvqHsOy2VUxuoAf5m_7c8RqvO&t=2681">python fuzzer</a> and come back.
+
+
+<a href="TBD">Day2</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
