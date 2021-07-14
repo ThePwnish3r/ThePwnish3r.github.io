@@ -48,10 +48,6 @@ run these commands to get it.
 wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
 {% endhighlight %}
 
-'''rust
-wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
-
-'''
 
 
 
