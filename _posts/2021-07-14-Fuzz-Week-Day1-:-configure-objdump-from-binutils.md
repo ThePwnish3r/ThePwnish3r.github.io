@@ -44,7 +44,7 @@ objdump displays information about one or more object files. The options control
 
 run these commands to get it.
 
-{% highlight  %}
+{% highlight bash %}
 wget https://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2
 {% endhighlight %}
 
