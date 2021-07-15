@@ -125,6 +125,6 @@ and let's run it using
 cargo run --release
 {% endhighlight %}
     
- <a><img src="_images/Screenshot from 2021-06-06 10-05-25.jpg" alt="first attemp"></a>
+ <a><img src="_images/Screenshot from 2021-06-06 10-05-25.jpg" alt="first atp"></a>
 
  YAAY WE ARE FUZZING !!
