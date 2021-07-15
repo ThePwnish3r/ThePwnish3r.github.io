@@ -124,7 +124,7 @@ and let's run it using
 {% highlight bash %}
 cargo run --release
 {% endhighlight %}
+    
+ <img src=requier("_images/Screenshot from 2021-06-06 10-05-25.png") alt="first attemp">
 
- <img src="_images/Screenshot from 2021-06-06 10-05-25.png" alt="first attemp">
- 
  YAAY WE ARE FUZZING !!
