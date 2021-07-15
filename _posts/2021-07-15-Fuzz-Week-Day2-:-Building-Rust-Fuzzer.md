@@ -448,3 +448,37 @@ Now, let's take the return code from the fuzz case and save inputs to observe cr
 
 Let's run it.
  <img src="/assets/images/Screenshot from 2021-06-07 10-41-27.png" alt="first atpcc">
+
+Yay! It worked, it started with unexpected high fcps, and my laptop screen is frozen after 2 seconds, maybe because I am running on all cores and opening Mozilla and VS at the same time, that is a lot of stuff for my laptop so I will continue with one core for now. 
+
+
+ <img src="/assets/images/Screenshot from 2021-06-07 10-58-25.png" alt="first atpcc">
+It worked better with one core and didn't freeze but I don't know why I am getting high fcps, it is okay let's continue to add some crash statistics.
+
+
+We added crashes in our struct for statistics and take statistics through our loop in worker function, then we add crashes next to fcps.
+```rust
+if let Some(11) = exit.signal() {
+                //SIGSEGV
+                 //prin!("crash!");
+
+                statistics.crashes.fetch_add(1,Ordering::SeqCst);
+
+            }
+```
+
+
+Let's try
+<img src="/assets/images/Screenshot from 2021-06-07 11-16-32.png" alt="first atpcc">
+
+Perfect, expected more crashes but we fuzzing on a live system so we can't expect anything.
+
+
+
+
+
+So, as you can see it is still very slow and we can't scale on a live system.To solve this problem we either use an emulator or hypervisor so we can deal with every fuzz instance as an independent instance from each other, this will help us to scale linearly and give us way better performance.
+
+
+
+Next blog post we are going to write a RISCV emulator.
