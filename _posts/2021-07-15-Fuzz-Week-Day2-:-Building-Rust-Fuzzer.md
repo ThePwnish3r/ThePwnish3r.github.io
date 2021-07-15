@@ -250,7 +250,7 @@ fn worker(thr_id: usize, statistics:Arc<Statistics>,corpus:Arc<Vec<Vec<u8>>>)-> 
 }
 ```
 
-Now, let's try to run it.
+Let's try to run it.
  <img src="/assets/images/Screenshot from 2021-06-06 14-33-04.png" alt="first atpcc">
 
 Nice, it worked fine.
