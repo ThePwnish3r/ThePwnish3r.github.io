@@ -113,7 +113,7 @@ find * | xargs file | grep -v ELF | cut -d: -f1 | xargs rm
 From here, he will start to write a fuzzing script in python to cover the basics of fuzzing but I am interested here in the Rust fuzzer. so you could watch the first video from minute 30 <a href="https://youtu.be/2xXt_q3Fex8?list=PLSkhUfcCXvqHsOy2VUxuoAf5m_7c8RqvO&t=2681">python fuzzer</a> and come back.
 
 
-<a href="TBD">Day2</a>
+<a href="https://thepwnish3r.github.io/2021/07/14/Fuzz-Week-Day2-Building-Rust-Fuzzer.html">Day2</a>
 
 
 
