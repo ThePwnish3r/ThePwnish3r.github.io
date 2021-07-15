@@ -2,24 +2,27 @@
 layout: post
 ---
 
-### what we did at Day 1?
+### What we did at <a href="https://thepwnish3r.github.io/2021/07/14/Fuzz-Week-Day1-configure-objdump-from-binutils.html">Day 1</a> ?
 - built objdump 
 - we copied usr/bin as a corpus
 - building a simple fuzzer and harness in python 
 
 
-In the day 2 video from 38:08 -> 01:03 there is a really good discussion about VR and bug-bounty if you are interested you should see it.
+
+In the day 2 video from  <a href="https://youtu.be/iM3s8-umRO0?list=PLSkhUfcCXvqHsOy2VUxuoAf5m_7c8RqvO&t=2336">38:08</a> -> 01:03 there is a really good discussion about VR and bug-bounty if you are interested you should see it.
 
 
 
-now let's continue FUZZING.
-we are going to rewrite the fuzzer in rust to have way better performance and control over threads.
+
+
+Now let's continue FUZZING.
+We are going to rewrite the fuzzer in rust to have way better performance and control over threads.
 
 <h1>Rust Fuzzer</h1>
 
 We start with building a new project with cargo new and copy our corpus in it to use it later.
 
-then, we write Fuzz function to take input and put it into a temp file, and run objdump against  this file.
+Then, we write Fuzz function to take input and put it into a temp file, and run objdump against this file.
 ```rust
 // save inp to  disk with unique filename and thr id and run it through objdump once and returning status from objdump
 
@@ -55,10 +58,10 @@ fn worker(thr_id: usize, statistics:Arc<Statistics>)-> io::Result<()>{
 
 }
 ```
-here you can see that we added a constant called BATCH_SIZE , this is the number of iteration to run ber thread before reporting statistics to global statistics.
+Here you can see that we added a constant called BATCH_SIZE , this is the number of iteration to run ber thread before reporting statistics to global statistics.
 
 
-then we try to add a safe way to report statistics about all threads.
+Then we try to add a safe way to report statistics about all threads.
 ```rust
 //statsitcs during fuzzing 
     let stats = Arc::new(Statistics::default());
@@ -83,10 +86,10 @@ then we try to add a safe way to report statistics about all threads.
         print!("[{:10.6}] cases{:10} | fcps{:10.2} \n",elapsed,cases,cases as f64/elapsed);
     }
 ```
-we did it like this, using  Atomically Reference Counted 'ARC',  Arc<T> uses atomic operations for its reference counting. This means that it is thread-safe. The disadvantage is that atomic operations are more expensive than ordinary memory accesses.
+We did it like this, using  Atomically Reference Counted 'ARC',  Arc<T> uses atomic operations for its reference counting. This means that it is thread-safe. The disadvantage is that atomic operations are more expensive than ordinary memory accesses.
 
 
-now we are ready to fuzz, our main will looks like that.
+Now we are ready to fuzz, our main will looks like that.
 ```rust
 fn main() -> io::Result<()> {
 
@@ -120,7 +123,7 @@ fn main() -> io::Result<()> {
 
 ```
 
-and let's run it using  
+And let's run it using  
 {% highlight bash %}
 cargo run --release
 {% endhighlight %}
@@ -130,9 +133,9 @@ cargo run --release
  YAAY WE ARE FUZZING !!
 
 
-So here I am running it with 4 cores laptop, and it was about 500 cases per second, so if you try it with 196 cores as Brandon did in the video you should get on a linear scale about 48000 fuzz cases per second. But sadly, it is like you have 4 cores running !!
+So, here I am running it with 4 cores laptop, and it was about 500 cases per second, if you try it with 196 cores as Brandon did in the video you should get on a linear scale about 48000 fuzz cases per second. But sadly, it is like you have 4 cores running !!
 
-That happens when you try to do a live fuzzing, you can't scale, so you need to use an emulator or hypervisor, don't ever fuzz on a live system.
+That happens when you try to do a live fuzzing, you can't scale. So, you need to use an emulator or hypervisor, don't ever fuzz on a live system.
 
 We found the best performance at 10 core, more than this it gets slow.
 
@@ -458,7 +461,7 @@ Yay! It worked, it started with unexpected high fcps, and my laptop screen was f
 It worked better with one core and didn't freeze but I don't know why I am getting high fcps, it is okay let's continue to add some crash statistics.
 
 
-We added crashes in our struct for statistics and take statistics through our loop in worker function, then we add crashes next to fcps.
+We add crashes in our struct for statistics and take statistics through our loop in worker function, then we add crashes next to fcps.
 ```rust
 if let Some(11) = exit.signal() {
                 //SIGSEGV
