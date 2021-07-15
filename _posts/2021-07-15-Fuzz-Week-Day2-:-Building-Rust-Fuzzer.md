@@ -128,3 +128,10 @@ cargo run --release
  <img src="/assets/images/Screenshot from 2021-06-06 10-05-25.png" alt="first atpcc">
 
  YAAY WE ARE FUZZING !!
+
+
+so here I am running it with 4 cores laptop and it was about 500 cases ber second, so if you try it with 196 cores as Brandon did in the video you should get in a linear scale about 48000 fuzz case ber second. but sadly it is like you have 4 cores running !!
+
+that happens when you try to do a live fuzzing, you cant scale so you need to use an emulator or hypervisor, don't ever fuzz on a live system.
+
+we found the best performance at 10 core more than this it gets slow.
