@@ -2,15 +2,6 @@
 layout: post
 ---
 
-### what we did at Day 1?
-- built objdump 
-- we copied usr/bin as a corpus
-- building a simple fuzzer and harness in python 
-
-
-
-----------------------------------------------------------------------------------
-
 This series of blog posts is based on <a href="https://twitter.com/gamozolabs">@gamozolabs</a> <a href="https://www.youtube.com/watch?v=2xXt_q3Fex8&list=PLSkhUfcCXvqHsOy2VUxuoAf5m_7c8RqvO">FuzzWeek</a>, I wrote this series because I was taking notes for his videos step by step so I thought it would be useful to share it with the community for people who struggle to watch long videos like me and try to simplify his content.
 
 if you don’t know his channel which I don’t think so if you are here for Fuzzing, you will find really cool stuff about fuzzing, emulation, hypervisors, and exploitation, I think his content is really better than a lot of 4 digits $ trainings in big conferences.
