@@ -2,7 +2,7 @@
 layout: post
 ---
 
-### What we did at <a href="https://thepwnish3r.github.io/2021/07/14/Fuzz-Week-Day1-configure-objdump-from-binutils.html">Day 1</a> ?
+### What we did at <a href="https://thepwnish3r.github.io/2021/07/13/Fuzz-Week-Day1-configure-objdump-from-binutils.html">Day 1</a> ?
 - built objdump 
 - we copied usr/bin as a corpus
 - building a simple fuzzer and harness in python 
