@@ -483,7 +483,7 @@ Perfect, expected more crashes but we fuzzing on a live system so we can't expec
 
 
 
-So, as you can see it is still very slow and we can't scale on a live system.To solve this problem we either use an emulator or hypervisor so we can deal with every fuzz instance as an independent instance from each other, this will help us to scale linearly and give us way better performance.
+So, as you can see it is still very slow and we can't scale on a live system. To solve this problem we either use an emulator or hypervisor so we can deal with every fuzz instance as an independent instance from each other, this will help us to scale linearly and give us way better performance.
 
 
 
