@@ -125,10 +125,6 @@ and let's run it using
 cargo run --release
 {% endhighlight %}
 
-![northern lights](_images/Screenshot from 2021-06-06 10-05-25.jpg)
-
-
-
  <img src="/assets/images/Screenshot from 2021-06-06 10-05-25.png" alt="first atpcc">
 
  YAAY WE ARE FUZZING !!
