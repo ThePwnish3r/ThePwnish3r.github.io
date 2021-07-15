@@ -124,7 +124,8 @@ and let's run it using
 {% highlight bash %}
 cargo run --release
 {% endhighlight %}
-    
- <a><img src="_images/Screenshot from 2021-06-06 10-05-25.jpg" alt="first atp"></a>
+
+![northern lights](_images/Screenshot from 2021-06-06 10-05-25.jpg)
+ <img src="_images/Screenshot from 2021-06-06 10-05-25.jpg" alt="first atp">
 
  YAAY WE ARE FUZZING !!
