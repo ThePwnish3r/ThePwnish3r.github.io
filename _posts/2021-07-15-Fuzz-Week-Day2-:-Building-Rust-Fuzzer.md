@@ -246,3 +246,205 @@ fn worker(thr_id: usize, statistics:Arc<Statistics>,corpus:Arc<Vec<Vec<u8>>>)-> 
 
 }
 ```
+
+Now, let's try to run it.
+ <img src="/assets/images/Screenshot from 2021-06-06 14-33-04.png" alt="first atpcc">
+
+Nice, it worked fine.
+
+
+
+
+This is the full code until now.
+```rust
+//use std::fs;
+use std::io;
+use std::path::Path;
+use std::sync::Arc;
+use std::sync::atomic::{AtomicUsize,Ordering};
+use std::process::{Command, ExitStatus};
+//use std::result::Result;
+use std::time::{Instant,Duration};
+use std::collections::BTreeSet;
+
+
+
+//number of iteration to run ber thread before reborting statisticst to global statistics
+const BATCH_SIZE :usize = 100;
+
+
+#[derive(Default)]
+
+
+struct Statistics{
+    //number of fuzz cases performed
+    fuzz_cases : AtomicUsize,
+
+
+}
+struct Rng(u64);
+
+
+impl Rng{
+    //create new number generator
+    fn new()-> Self{
+        // hex(random.randint(0, 2**64 - 1))
+        // Also XORing seed by current uptime of processor so each
+        // thread's rng is unique
+
+        Rng(0x8644d6eb17b7ab1a ^ unsafe{ std::arch::x86_64::_rdtsc() })
+    }
+    #[inline]
+
+    //generate random number 
+    fn rand(&mut self) -> usize {
+
+        let val = self.0;
+
+        self.0 ^= self.0 << 13 ;
+        self.0 ^= self.0 >> 17 ;
+        self.0 ^= self.0 << 43 ;
+
+        val as usize 
+    }
+
+
+}
+
+
+
+
+// save inp to  disk with uniqe filename and thr id and run it through objdump once and returning status from objdump
+fn fuzz<P: AsRef<Path>>(filename: P, inp: &[u8]) -> io::Result<ExitStatus> {
+
+    //write out the input to a temp file
+    std::fs::write(filename.as_ref(), inp)?;
+
+    let runner = Command::new("./objdump")
+        .args(&["-x", filename.as_ref().to_str().unwrap()])
+        .output()?;
+
+    Ok(runner.status)
+}
+
+
+
+
+fn worker(thr_id: usize, statistics:Arc<Statistics>,corpus:Arc<Vec<Vec<u8>>>)-> io::Result<()>{
+    
+
+    let mut rng = Rng::new();
+
+
+    let filename = format!("tempinput{}", thr_id);
+
+
+    // input for fuzz case
+    let mut fuzz_input = Vec::new();
+
+    loop{
+        //pick a random entry from the corpus 
+        let sel = rng.rand() % corpus.len();
+
+
+        // copy random input from corpus into fuzz input
+        fuzz_input.clear();
+        fuzz_input.extend_from_slice(&corpus[sel]);
+
+        // Randomly corrupt the input
+        for _ in 0..(rng.rand() % 8) + 1 {
+            let sel = rng.rand() % fuzz_input.len();
+            fuzz_input[sel] = rng.rand() as u8;
+        }
+        //
+        for _ in 0..BATCH_SIZE{
+        
+            fuzz(&filename,&fuzz_input)?;
+        }
+        //update statistics 
+        statistics.fuzz_cases.fetch_add(BATCH_SIZE,Ordering::SeqCst);       
+
+    }
+    
+
+}
+
+
+
+
+fn main() -> io::Result<()> {
+
+    //load initial corpus
+
+    let mut corpus = BTreeSet::new();
+
+    for filename in std::fs::read_dir("corpus")?{
+
+        let filename =filename?.path();
+
+        corpus.insert(std::fs::read(filename)?);
+
+
+    }
+
+    let corpus:Arc<Vec<Vec<u8>>> = Arc::new(corpus.into_iter().collect());
+
+    print!("loaded {} this files into corpus",corpus.len());
+
+    //statsitcs during fuzzing 
+    let stats = Arc::new(Statistics::default());
+
+    let corpus = corpus.clone();
+
+    for thr_id in 0..4{
+
+        let stats =stats.clone();
+
+        let corpus = corpus.clone();
+        //spwan the thread
+       std::thread::spawn(move || { worker(thr_id,stats ,corpus)});
+
+    }
+    //start timer 
+    let start = Instant::now();
+   
+    loop{
+        //compute and print statistics 
+        std::thread::sleep(Duration::from_millis(1000));
+        let elapsed = start.elapsed().as_secs_f64();
+        let cases = stats.fuzz_cases.load(Ordering::SeqCst);
+        
+        print!("[{:10.6}] cases{:10} | fcps{:10.2} \n",elapsed,cases,cases as f64/elapsed);
+    }
+
+
+    Ok(())
+
+}
+```
+
+A bit missy but it is ok.
+
+
+
+
+
+
+
+Now, let's take the return code from the fuzz case and save inputs to observe crashes. We will do that through ExitStatusExt and check if the signal equals 11 so it means SIGSEGV.
+
+```rust
+//to get exit status 
+            let exit = fuzz(&filename,&fuzz_input)?;
+
+
+            if let Some(11) = exit.signal() {
+                //SIGSEGV
+                print!("Crash !!\n"); 
+        
+       
+            }
+```
+
+Let's run it.
+ <img src="/assets/images/Screenshot from 2021-06-07 10-41-27.png" alt="first atpcc">
