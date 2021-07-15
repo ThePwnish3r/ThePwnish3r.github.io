@@ -452,7 +452,7 @@ Now, let's take the return code from the fuzz case and save inputs to observe cr
 Let's run it.
  <img src="/assets/images/Screenshot from 2021-06-07 10-41-27.png" alt="first atpcc">
 
-Yay! It worked, it started with unexpected high fcps, and my laptop screen was frozen after 2 seconds, maybe because I am running on all cores and opening Mozilla and VS code at the same time, that is a lot of stuff for my laptop so I will continue with one core for now. 
+Yay! It worked, it started with unexpected high fcps, and my laptop screen was froze after 2 seconds, maybe because I am running on all cores and opening Mozilla and VS code at the same time, that is a lot of stuff for my laptop so I will continue with one core for now. 
 
 
 
