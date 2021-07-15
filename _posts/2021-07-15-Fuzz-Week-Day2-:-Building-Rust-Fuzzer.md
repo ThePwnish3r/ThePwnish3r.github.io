@@ -452,7 +452,9 @@ Let's run it.
 Yay! It worked, it started with unexpected high fcps, and my laptop screen is frozen after 2 seconds, maybe because I am running on all cores and opening Mozilla and VS at the same time, that is a lot of stuff for my laptop so I will continue with one core for now. 
 
 
- <img src="/assets/images/Screenshot from 2021-06-07 10-58-25.png" alt="first atpcc">
+
+<img src="/assets/images/Screenshot from 2021-06-07 10-58-25.png" alt="first atpcc">
+
 It worked better with one core and didn't freeze but I don't know why I am getting high fcps, it is okay let's continue to add some crash statistics.
 
 
@@ -469,6 +471,7 @@ if let Some(11) = exit.signal() {
 
 
 Let's try
+
 <img src="/assets/images/Screenshot from 2021-06-07 11-16-32.png" alt="first atpcc">
 
 Perfect, expected more crashes but we fuzzing on a live system so we can't expect anything.
