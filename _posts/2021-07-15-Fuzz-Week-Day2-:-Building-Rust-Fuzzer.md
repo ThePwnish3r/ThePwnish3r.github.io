@@ -136,6 +136,10 @@ That happens when you try to do a live fuzzing, you can't scale, so you need to 
 
 We found the best performance at 10 core, more than this it gets slow.
 
+
+
+
+
 Next, we will load our corpus and try to do real fuzzing with real corpus.
 
 We will load the corpus and deduplicate it using a set like BTresSet, then return the set back in a vector and put it in ARC to use it between threads safely as we talked about that earlier. That is why we are writing in rust here you can feel the concurrency, we can use corpus between threads without worrying about race conditions and stuff like this.
