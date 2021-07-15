@@ -129,6 +129,6 @@ cargo run --release
 
 
 
- <img src="_images/Screenshot-from-2021-06-06-10-05-25.png" alt="first atpcc">
+ <img src="/assets/images/Screenshot from 2021-06-06 10-05-25.png" alt="first atpcc">
 
  YAAY WE ARE FUZZING !!
