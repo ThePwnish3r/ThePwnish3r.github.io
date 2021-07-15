@@ -11,6 +11,7 @@ layout: post
 In the day 2 video from 38:08 -> 01:03 there is a really good discussion about VR and bug-bounty if you are interested you should see it.
 
 
+
 now let's continue FUZZING.
 we are going to rewrite the fuzzer in rust to have way better performance and control over threads.
 
